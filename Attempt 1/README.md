@@ -52,7 +52,7 @@ Your decisions throughout the journey influence how the story unfolds. Some key 
 
 4. **Playing**:  
    After running the game, follow the on-screen instructions to make choices and continue through the story.
-   
+
 
 ### Contributing
 
@@ -65,3 +65,7 @@ If you'd like to contribute to the game, feel free to fork the repository, make 
 ### License
 
 This game is open-source and free to use. Feel free to modify and redistribute it under the terms of the MIT License.
+
+### FYI
+
+This was made with ChatGPT.
