@@ -119,4 +119,4 @@ This project is open-source and available under the **MIT License**. Feel free t
 
 ## FYI
 
-This was also written by ChatGPT
+This was written by ChatGPT

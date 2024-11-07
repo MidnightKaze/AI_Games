@@ -68,4 +68,4 @@ This game is open-source and free to use. Feel free to modify and redistribute i
 
 ### FYI
 
-This was made with ChatGPT.
+This was made by ChatGPT.
