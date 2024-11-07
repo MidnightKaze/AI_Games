@@ -26,26 +26,46 @@ class Game:
             "human": {"health": 100, "mana": 50, "strength": 5, "defense": 5, "magic": 5},
             "kitsune": {"health": 80, "mana": 80, "strength": 4, "defense": 4, "magic": 8},
             "oni": {"health": 120, "mana": 30, "strength": 8, "defense": 6, "magic": 2},
-            "tengu": {"health": 90, "mana": 60, "strength": 6, "defense": 4, "magic": 6}
+            "tengu": {"health": 90, "mana": 60, "strength": 6, "defense": 4, "magic": 6},
+            
+            # New Races
+            "yurei": {"health": 60, "mana": 100, "strength": 3, "defense": 3, "magic": 10},
+            "kappa": {"health": 110, "mana": 40, "strength": 7, "defense": 6, "magic": 3},
+            "raijin": {"health": 90, "mana": 70, "strength": 5, "defense": 5, "magic": 7},
+            "nekomata": {"health": 70, "mana": 80, "strength": 4, "defense": 5, "magic": 9}
         }
         
         self.classes = {
-            "samurai": {"health": 20, "mana": 0, "strength": 4, "defense": 3, "magic": 0,
-                       "spells": []},
-            "onmyoji": {"health": 0, "mana": 30, "strength": 0, "defense": 1, "magic": 5,
-                       "spells": ["Fireball", "Lightning", "Spirit Ward"]},
-            "ninja": {"health": 10, "mana": 10, "strength": 3, "defense": 2, "magic": 2,
-                     "spells": ["Smoke Screen", "Shadow Strike"]},
-            "monk": {"health": 15, "mana": 15, "strength": 2, "defense": 4, "magic": 3,
-                    "spells": ["Healing Prayer", "Divine Protection"]}
+            "samurai": {"health": 20, "mana": 0, "strength": 4, "defense": 3, "magic": 0, "spells": []},
+            "onmyoji": {"health": 0, "mana": 30, "strength": 0, "defense": 1, "magic": 5, "spells": ["Fireball", "Lightning", "Spirit Ward"]},
+            "ninja": {"health": 10, "mana": 10, "strength": 3, "defense": 2, "magic": 2, "spells": ["Smoke Screen", "Shadow Strike"]},
+            "monk": {"health": 15, "mana": 15, "strength": 2, "defense": 4, "magic": 3, "spells": ["Healing Prayer", "Divine Protection"]},
+            
+            # New Classes
+            "shugenja": {"health": 10, "mana": 40, "strength": 1, "defense": 2, "magic": 6, "spells": ["Earth Blessing", "Wind Blast", "Purify"]},
+            "ronin": {"health": 25, "mana": 5, "strength": 5, "defense": 4, "magic": 1, "spells": []},
+            "yamabushi": {"health": 20, "mana": 20, "strength": 3, "defense": 3, "magic": 4, "spells": ["Mountain Strength", "Sacred Flame"]},
+            "kabuki": {"health": 15, "mana": 25, "strength": 2, "defense": 3, "magic": 5, "spells": ["Illusion Dance", "Spirit Mask"]}
         }
+
         
         self.enemies = {
-            "Yokai": {"health": 50, "strength": 5, "defense": 3, "exp": 20},
-            "Evil Spirit": {"health": 30, "strength": 3, "defense": 2, "exp": 15},
-            "Corrupted Samurai": {"health": 70, "strength": 7, "defense": 5, "exp": 30},
-            "Demon": {"health": 100, "strength": 8, "defense": 6, "exp": 40}
+            "Yokai": {"health": 80, "strength": 8, "defense": 6, "exp": 20},
+            "Evil Spirit": {"health": 60, "strength": 6, "defense": 4, "exp": 15},
+            "Corrupted Samurai": {"health": 100, "strength": 12, "defense": 8, "exp": 30},
+            "Demon": {"health": 150, "strength": 14, "defense": 10, "exp": 40},
+            
+            # New Enemies
+            "Oni Warrior": {"health": 120, "strength": 15, "defense": 10, "exp": 45},
+            "Tsuchigumo": {"health": 90, "strength": 9, "defense": 7, "exp": 25},
+            "Jorogumo": {"health": 70, "strength": 10, "defense": 5, "exp": 35},
+            "Karakasa Obake": {"health": 50, "strength": 5, "defense": 3, "exp": 10},
+            "Noppera-bo": {"health": 80, "strength": 6, "defense": 4, "exp": 20},
+            "Yuki-onna": {"health": 100, "strength": 12, "defense": 8, "exp": 35},
+            "Nurarihyon": {"health": 200, "strength": 20, "defense": 12, "exp": 60},
+            "Gashadokuro": {"health": 250, "strength": 18, "defense": 15, "exp": 70}
         }
+
         
         self.player = None
         self.current_floor = 1
