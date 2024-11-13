@@ -138,8 +138,8 @@ def random_event():
     events = [
         "You ran into a low hanging tree branch after fumbling around with your bag.",
         "You ran into a low hanging tree branch after fumbling around with your bag.",
-        "A bunny lept out of the nearby bushed, making you stumble back.",
-        "A bunny lept out of the nearby bushed, making you stumble back.",
+        "A bunny lept out of a nearby bush, making you stumble back.",
+        "A bunny lept out of a nearby bush, making you stumble back.",
         "You tripped over a loose tree branch on the path.",
         "You tripped over a loose tree branch on the path.",
         "You found a Healing Potion lying on the ground.",
@@ -192,7 +192,7 @@ def village_event():
         slow_print("\nThe elder blesses you, granting a temporary health boost.")
         player.heal(20)
         slow_print(f"\nPlayer health: {player.health}")
-        story_state["artifact_found"] = False  # Quest accepted, but artifact not yet found
+        story_state["artifact_found"] = True  # Quest accepted. Found artifact
     else:
         slow_print("\nYou decide the quest is too dangerous and press on without further aid.")
         story_state["villager_trust"] -= 1  # Decrease trust if quest is refused
@@ -263,7 +263,9 @@ def combat(player, enemy):
 
 # Sample Enemies
 goblin = Enemy("Goblin", health=50, attack=10)
+slime = Enemy("Smile", health=20, attack=5)
 orc = Enemy("Orc", health=70, attack=20)
+dragon = Enemy("Dragon", health=150, attack = 40)
 dark_spirit = Enemy("Dark Spirit", health=100, attack=30)
 
 # Ending Function with Diverging Endings
@@ -296,21 +298,28 @@ def main():
     # Forest Area
     slow_print("\nYou venture into the Haunted Forest...")
     forest_event()
-    random_event()  # Random event here
-    combat(player, goblin)
+    random_event() # Trigger more random events cuz why not lol
+    random_event()  
+    combat(player, goblin) # Making combat a pain cuz why not lol
+    combat(player,slime)
+    combat(player,slime)
     
     if player.health > 0:
         # Village Area
         slow_print("\nYou proceed to the cursed village...")
         village_event()
-        random_event()  # Random event here
+        random_event()
+        random_event()
+        random_event()
+        combat(player,slime)
         combat(player, orc)
         
     if player.health > 0:
         # Dungeon Area
         slow_print("\nYou arrive at the ancient dungeon...")
         dungeon_event()
-        random_event()  # Random event here
+        random_event()
+        combat(player, dragon) # Throw in a mini boss harder than the final boss cuz why not
         combat(player, dark_spirit)
 
     # Game Ending based on choices and health status

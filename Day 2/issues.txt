@@ -4,3 +4,6 @@ health is calculated wrong - when attacked and when healing I guess lol
     - and when u heal you lose health lol
         - erm the code is a little weird, so I have literally no clue how to fix that
         - IT WORKS NOW
+
+wait so like... u can just never find the artifact...
+    - fixed it :D
