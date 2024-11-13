@@ -1,0 +1,6 @@
+health is calculated wrong - when attacked and when healing I guess lol
+    - somehow when the enemy attacks you never lose an HP :D
+        - jk. I think the def bonus is so op at the start you never lose HP
+    - and when u heal you lose health lol
+        - erm the code is a little weird, so I have literally no clue how to fix that
+        - IT WORKS NOW

@@ -2,13 +2,13 @@ import random
 import time
 
 # Define a function to print text slowly
-def slow_print(text, delay=0.05):
+def slow_print(text, delay=0.02):
     for char in text:
         print(char, end="", flush=True)
         time.sleep(delay)
     print()
 
-def slow_input(prompt, delay=0.05):
+def slow_input(prompt, delay=0.02):
     slow_print(prompt, delay)  # Print the prompt with slow effect
     return input()  # Take user input as usual
 
@@ -39,7 +39,7 @@ class Character:
             self.health = 0  # Prevent health from going below zero
 
     def heal(self, amount):
-        self.health = min(self.health + amount, 100)
+        self.health = min(self.health + amount, 200)
 
     def can_use_special_attack(self):
         return self.special_attack_cooldown == 0
@@ -56,6 +56,14 @@ class Character:
             self.heal(30)
             self.inventory.remove(item)
             slow_print(f"\n{self.name} used a Healing Potion. Health is now {self.health}!")
+        elif item == "Health Elixir":
+            self.heal(50)
+            self.inventory.remove(item)
+            slow_print(f"\n{self.name} used a Health Elixir. Health is now {self.health}!")
+        elif item == "Attack Stone":
+            self.attack += 10
+            self.inventory.remove(item)
+            slow_print(f"\n{self.name} used a Attack Stone. Attack is now {self.attack}!")
         else:
             slow_print(f"\n{item} cannot be used.")
 
@@ -128,8 +136,14 @@ def display_inventory():
 # Random Events for Item Acquisition
 def random_event():
     events = [
+        "You ran into a low hanging tree branch after fumbling around with your bag.",
+        "You ran into a low hanging tree branch after fumbling around with your bag.",
+        "A bunny lept out of the nearby bushed, making you stumble back.",
+        "A bunny lept out of the nearby bushed, making you stumble back.",
+        "You tripped over a loose tree branch on the path.",
+        "You tripped over a loose tree branch on the path.",
         "You found a Healing Potion lying on the ground.",
-        "You stumble upon a treasure chest and find a Magic Stone!",
+        "You stumble upon a treasure chest and find an Attack Stone!",
         "A merchant gives you a Health Elixir as a token of goodwill.",
     ]
     event = random.choice(events)
@@ -138,8 +152,17 @@ def random_event():
     # Adding items to inventory
     if "Healing Potion" in event:
         add_to_inventory("Healing Potion")
-    elif "Magic Stone" in event:
-        add_to_inventory("Magic Stone")
+    elif "low hanging tree branch" in event:
+        player.health -=5
+        print(f"\nYou lost 5 HP. Player health: {player.health}")
+    elif "tree branch" in event:
+        player.health -=5
+        print(f"\nYou lost 5 HP from the fall. Player health: {player.health}")
+    elif "bunny" in event:
+        player.health -=5
+        print(f"\nYou lost 5 HP from the fall. Player health: {player.health}")
+    elif "Attack Stone" in event:
+        add_to_inventory("Attack Stone")
     elif "Health Elixir" in event:
         add_to_inventory("Health Elixir")
 
@@ -168,6 +191,7 @@ def village_event():
     if choice == "1":
         slow_print("\nThe elder blesses you, granting a temporary health boost.")
         player.heal(20)
+        slow_print(f"\nPlayer health: {player.health}")
         story_state["artifact_found"] = False  # Quest accepted, but artifact not yet found
     else:
         slow_print("\nYou decide the quest is too dangerous and press on without further aid.")
@@ -238,9 +262,9 @@ def combat(player, enemy):
         slow_print(f"\nYou have defeated {enemy.name}!")
 
 # Sample Enemies
-goblin = Enemy("Goblin", health=30, attack=8)
-orc = Enemy("Orc", health=50, attack=12)
-dark_spirit = Enemy("Dark Spirit", health=70, attack=15)
+goblin = Enemy("Goblin", health=50, attack=10)
+orc = Enemy("Orc", health=70, attack=20)
+dark_spirit = Enemy("Dark Spirit", health=100, attack=30)
 
 # Ending Function with Diverging Endings
 def game_ending():
