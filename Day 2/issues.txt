@@ -7,3 +7,6 @@ health is calculated wrong - when attacked and when healing I guess lol
 
 wait so like... u can just never find the artifact...
     - fixed it :D
+
+so like does the SA ever recharge? that i do not know lol
+    - i'm surprised it does

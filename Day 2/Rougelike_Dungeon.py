@@ -56,14 +56,18 @@ class Character:
             self.heal(30)
             self.inventory.remove(item)
             slow_print(f"\n{self.name} used a Healing Potion. Health is now {self.health}!")
+        elif item == "Attack Potion":
+            self.attack += 10
+            self.inventory.remove(item)
+            slow_print(f"\n{self.name} used an Attack Potion. Your attack rose to: {self.attack}!")
         elif item == "Health Elixir":
             self.heal(50)
             self.inventory.remove(item)
             slow_print(f"\n{self.name} used a Health Elixir. Health is now {self.health}!")
         elif item == "Attack Stone":
-            self.attack += 10
+            self.attack += 20
             self.inventory.remove(item)
-            slow_print(f"\n{self.name} used a Attack Stone. Attack is now {self.attack}!")
+            slow_print(f"\n{self.name} used an Attack Stone. Your attack rose to: {self.attack}!")
         else:
             slow_print(f"\n{item} cannot be used.")
 
@@ -144,6 +148,7 @@ def random_event():
         "You tripped over a loose tree branch on the path.",
         "You found a Healing Potion lying on the ground.",
         "You stumble upon a treasure chest and find an Attack Stone!",
+        "On the side of the path you find an Attack Potion!",
         "A merchant gives you a Health Elixir as a token of goodwill.",
     ]
     event = random.choice(events)
@@ -152,15 +157,17 @@ def random_event():
     # Adding items to inventory
     if "Healing Potion" in event:
         add_to_inventory("Healing Potion")
+    elif "Attack Potion" in event:
+        add_to_inventory("Attack Potion")
     elif "low hanging tree branch" in event:
         player.health -=5
-        print(f"\nYou lost 5 HP. Player health: {player.health}")
+        slow_print(f"\nYou lost 5 HP. Your health is now: {player.health}")
     elif "tree branch" in event:
         player.health -=5
-        print(f"\nYou lost 5 HP from the fall. Player health: {player.health}")
+        slow_print(f"\nYou lost 5 HP from the fall. Your health it now: {player.health}")
     elif "bunny" in event:
         player.health -=5
-        print(f"\nYou lost 5 HP from the fall. Player health: {player.health}")
+        print(f"\nYou lost 5 HP from the fall. Your health is now: {player.health}")
     elif "Attack Stone" in event:
         add_to_inventory("Attack Stone")
     elif "Health Elixir" in event:
@@ -211,6 +218,7 @@ def dungeon_event():
         else:
             slow_print("\nYou keep the artifact, feeling its dark power coursing through you.")
             player.attack += 5  # Gain a power boost
+            slow_print(f"\nYour attack rose to: {player.attack}")
             story_state["final_choice"] = "kept"
     else:
         slow_print("\nWithout the artifact, you realize you cannot complete the quest.")
@@ -263,7 +271,9 @@ def combat(player, enemy):
 
 # Sample Enemies
 goblin = Enemy("Goblin", health=50, attack=10)
-slime = Enemy("Smile", health=20, attack=5)
+slime1 = Enemy("Slime", health=20, attack=5)
+slime2 = Enemy("Slime", health=20, attack=5)
+slime3 = Enemy("Slime", health=20, attack=5)
 orc = Enemy("Orc", health=70, attack=20)
 dragon = Enemy("Dragon", health=150, attack = 40)
 dark_spirit = Enemy("Dark Spirit", health=100, attack=30)
@@ -301,8 +311,8 @@ def main():
     random_event() # Trigger more random events cuz why not lol
     random_event()  
     combat(player, goblin) # Making combat a pain cuz why not lol
-    combat(player,slime)
-    combat(player,slime)
+    combat(player, slime1)
+    combat(player, slime2)
     
     if player.health > 0:
         # Village Area
@@ -311,7 +321,7 @@ def main():
         random_event()
         random_event()
         random_event()
-        combat(player,slime)
+        combat(player, slime3)
         combat(player, orc)
         
     if player.health > 0:
@@ -327,3 +337,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+"""
+This game is stupid hard if you don't know the right choices to make lmao.
+Sorry not sorry.
+"""
